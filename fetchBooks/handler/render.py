@@ -91,9 +91,3 @@ class FetchBooks( Iface ):
 
         return  response
 
-    def get_update( self, currentStatus ):
-        print "Got a update request."
-
-        return None
-
-
