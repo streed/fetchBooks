@@ -1,4 +1,7 @@
+import os
 import time
+
+from jinja2 import Environment, FileSystemLoader
 
 from thrift.transport import TSocket
 from thrift.transport import TTransport
@@ -10,6 +13,12 @@ from ..fetch.fetchBooks.ttypes import FetchBooksResponse, Invoice, Order, Food
 
 
 class FetchBooks( Iface ):
+
+    env = None
+
+    def __init__( self ):
+        if( not FetchBooks.env ):
+            FetchBooks.env = Environment( loader=FileSystemLoader( os.path.join( os.path.dirname( __file__ ), "..", "templates" ) ) )
 
     @classmethod
     def makeServer( cls, port=30303 ):
@@ -69,13 +78,16 @@ class FetchBooks( Iface ):
 
 
     def render_invoice( self, invoice ):
-        print invoice
-        print invoice.order
-        print invoice.order.foods
 
         response = FetchBooksResponse()
         response.timestamp = int( time.time() )
         response.invoiceUrl = "http://test.com"
+
+        template = FetchBooks.env.get_template( "invoice.html" )
+
+        html = template.render()
+
+        #DO stuff with the HTML to make the PDF
 
         return  response
 

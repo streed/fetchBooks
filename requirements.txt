@@ -1,0 +1,4 @@
+Jinja2==2.7.2
+MarkupSafe==0.18
+thrift==0.9.1
+wsgiref==0.1.2
