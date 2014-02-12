@@ -1,13 +1,1 @@
-{'invoiceDate': 1392169421,
-   'invoiceNumber': 1,
-    'order': {'discountPercentage': 15,
-        'food': [{'description': 'Cheese Pizza',
-              'item': 'Pizza',
-                  'quantity': 1,
-                      'unitCost': 1000}],
-          'subTotal': 1000,
-            'tax': 10},
-     'restaurant_address': '123 Fake Street. Roanoke, VA',
-      'restaurant_contact': 'Mr. Fakeson',
-       'restaurant_name': 'Test'}
-
+{"invoiceDate": 1392169421, "restaurant_address": "123 Fake Street. Roanoke, VA", "restaurant_contact": "Mr. Fakeson", "restaurant_name": "Test", "invoiceNumber": 1, "order": {"food": [{"item": "Pizza", "unitCost": 1000, "description": "Cheese Pizza", "quantity": 1}], "tax": 10, "discountPercentage": 15, "subTotal": 1000}}
