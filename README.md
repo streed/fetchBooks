@@ -7,10 +7,10 @@ Freshbooks replacement for Fetch
 
 {
    "order":{
-      "id":4119,
+      "id":4132,
       "status":"pending",
-      "order_date":"2014-02-18 13:53:30",
-      "modified_date":"2014-02-18 13:53:30",
+      "order_date":"2014-02-18 14:41:36",
+      "modified_date":"2014-02-18 14:41:36",
       "customer_note":"",
       "order_custom_fields":{
          "_billing_country":[
@@ -95,16 +95,16 @@ Freshbooks replacement for Fetch
             "0.00"
          ],
          "_order_tax":[
-            "1.91"
+            "0.7"
          ],
          "_order_shipping_tax":[
             "0"
          ],
          "_order_total":[
-            "26.48"
+            "13.44"
          ],
          "_order_key":[
-            "order_5303ac2a4b559"
+            "order_5303b770d98f4"
          ],
          "_customer_user":[
             "2"
@@ -122,7 +122,7 @@ Freshbooks replacement for Fetch
             "Mozilla\/5.0 (Windows NT 6.3; WOW64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/32.0.1700.107 Safari\/537.36"
          ]
       },
-      "order_key":"order_5303ac2a4b559",
+      "order_key":"order_5303b770d98f4",
       "billing_first_name":"TEST",
       "billing_last_name":"TEST",
       "billing_company":"Embark Web Solutions",
@@ -149,14 +149,14 @@ Freshbooks replacement for Fetch
       "payment_method_title":"Cash on Delivery",
       "order_discount":"0.00",
       "cart_discount":"0.00",
-      "order_tax":"1.91",
+      "order_tax":"0.7",
       "order_shipping":"5.99",
       "order_shipping_tax":"0",
-      "order_total":"26.48",
+      "order_total":"13.44",
       "taxes":null,
       "customer_user":"2",
       "user_id":2,
-      "completed_date":"2014-02-18 13:53:30",
+      "completed_date":"2014-02-18 14:41:36",
       "billing_address":null,
       "formatted_billing_address":null,
       "shipping_address":null,
@@ -167,92 +167,57 @@ Freshbooks replacement for Fetch
       "display_totals_ex_tax":true,
       "display_cart_ex_tax":true
    },
-   "food":{
-      "1453":{
-         "name":"Wingettes",
-         "type":"line_item",
-         "item_meta":{
-            "_qty":[
-               "1"
-            ],
-            "_tax_class":[
-               ""
-            ],
-            "_product_id":[
-               "3274"
-            ],
-            "_variation_id":[
-               "3279"
-            ],
-            "_line_subtotal":[
-               "10.99"
-            ],
-            "_line_total":[
-               "10.99"
-            ],
-            "_line_tax":[
-               "1.13"
-            ],
-            "_line_subtotal_tax":[
-               "1.13"
-            ],
-            "pa_thelmas-wingettes-size":[
-               "12pc"
-            ],
-            "pa_thelmas-wingettes-sauce":[
-               "bbq"
-            ]
+   "food":[
+      {
+         "item":{
+            "name":"Chicken Caesar",
+            "type":"line_item",
+            "item_meta":{
+               "_qty":[
+                  "1"
+               ],
+               "_tax_class":[
+                  ""
+               ],
+               "_product_id":[
+                  "2282"
+               ],
+               "_variation_id":[
+                  "2283"
+               ],
+               "_line_subtotal":[
+                  "6.75"
+               ],
+               "_line_total":[
+                  "6.75"
+               ],
+               "_line_tax":[
+                  "0.7"
+               ],
+               "_line_subtotal_tax":[
+                  "0.7"
+               ],
+               "pa_mill-sandwich-sides":[
+                  "caesar-salad"
+               ],
+               "pa_mill-sandwich-breads":[
+                  "ciabatta-bread"
+               ]
+            },
+            "qty":"1",
+            "tax_class":"",
+            "product_id":"2282",
+            "variation_id":"2283",
+            "line_subtotal":"6.75",
+            "line_total":"6.75",
+            "line_tax":"0.7",
+            "line_subtotal_tax":"0.7",
+            "pa_mill-sandwich-sides":"caesar-salad",
+            "pa_mill-sandwich-breads":"ciabatta-bread"
          },
-         "qty":"1",
-         "tax_class":"",
-         "product_id":"3274",
-         "variation_id":"3279",
-         "line_subtotal":"10.99",
-         "line_total":"10.99",
-         "line_tax":"1.13",
-         "line_subtotal_tax":"1.13",
-         "pa_thelmas-wingettes-size":"12pc",
-         "pa_thelmas-wingettes-sauce":"bbq"
-      },
-      "1454":{
-         "name":"(6) Chicken Tenders",
-         "type":"line_item",
-         "item_meta":{
-            "_qty":[
-               "1"
-            ],
-            "_tax_class":[
-               ""
-            ],
-            "_product_id":[
-               "3732"
-            ],
-            "_variation_id":[
-               ""
-            ],
-            "_line_subtotal":[
-               "7.59"
-            ],
-            "_line_total":[
-               "7.59"
-            ],
-            "_line_tax":[
-               "0.78"
-            ],
-            "_line_subtotal_tax":[
-               "0.78"
-            ]
-         },
-         "qty":"1",
-         "tax_class":"",
-         "product_id":"3732",
-         "variation_id":"",
-         "line_subtotal":"7.59",
-         "line_total":"7.59",
-         "line_tax":"0.78",
-         "line_subtotal_tax":"0.78"
+         "restaurant":"Mill Mountain Coffee"
       }
-   }
+   ]
 }
 
 ```
