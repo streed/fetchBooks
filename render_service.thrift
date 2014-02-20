@@ -20,8 +20,8 @@ struct FetchBooksResponse {
 struct Item {
   1:string name,
   2:i32 qty,
-  3:i64 subtotal,
-  4:i64 total
+  3:double subtotal,
+  4:double total
 }
 
 typedef list<Item> Food
@@ -31,13 +31,14 @@ typedef list<Item> Food
 */
 struct Order {
   1:i64 id,
-  2:i64 total, 
+  2:double total, 
   3:string order_date,
   4:Food food
 }
 
 struct Restaurant {
-  1:Order order
+  1:string name,
+  2:Order order
 }
 
 typedef list<Restaurant> Restaurants

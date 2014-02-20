@@ -1,3 +1,4 @@
+import boto
 import os
 import time
 
@@ -10,8 +11,10 @@ from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
 
+from weasyprint import HTML
+
 from ..fetch.fetchBooks.FetchBooksService import Iface, Processor, Client
-from ..fetch.fetchBooks.ttypes import FetchBooksResponse, Invoice, Order, Food, Restaurant, Item
+from ..fetch.fetchBooks.ttypes import FetchBooksResponse, Invoice, Order, Restaurant, Item
 
 
 class FetchBooks( Iface ):
@@ -52,14 +55,14 @@ class FetchBooks( Iface ):
             item = Item()
             
             item.name = i["name"]
-            item.qty = i["qty"]
-            item.subtotal = i["line_subtotal"]
-            item.total = i["line_total"]
+            item.qty = int( i["qty"] )
+            item.subtotal = float( i["line_subtotal"] )
+            item.total = float( i["line_total"] )
 
             return item
 
         i = Invoice()
-        r = Restaurants()
+        i.restaurants = []
 
         foods = invoice["food"]
 
@@ -72,10 +75,11 @@ class FetchBooks( Iface ):
             restaurant = Restaurant()
             order = Order()
             order.id = invoice["order"]["id"]
-            order.total = invoice["order"]["order_total"]
+            order.total = float( invoice["order"]["order_total"] )
             order.order_date = invoice["order"]["order_date"]
             order.food = rs[k]
             restaurant.order = order
+            restaurant.name = k
             i.restaurants.append( restaurant )
 
         return i
@@ -89,9 +93,12 @@ class FetchBooks( Iface ):
 
         template = FetchBooks.env.get_template( "invoice.html" )
 
-        html = template.render()
+        for r in invoice.restaurants:
 
-        #DO stuff with the HTML to make the PDF
+            html = template.render( restaurant=r )
 
+            HTML( string=html ).write_pdf( "/tmp/test.pdf" )
+
+        
         return  response
 

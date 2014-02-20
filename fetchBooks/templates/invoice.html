@@ -1,1 +1,26 @@
-Invoice
+<html>
+  <body>
+    <h1>FetchRoanoke Invoice: {{ restaurant.order.id }}</h1>
+    <h2>{{ restaurant.name }}</h2>
+    <table>
+        <thead>
+            <th>Item Name</th>
+            <th>Qty</th>
+            <th>Subtotal</th>
+            <th>Total</th>
+          </thead>
+          <tbody>
+          {% for f in restaurant.order.food %}
+            <tr>
+              <td>{{ f.name }}</td>
+              <td>{{ f.qty }}</td>
+              <td>{{ f.subtotal }}</td>
+              <td>{{ f.total }}</td>
+          {% endfor %}
+          </tbody>
+    </table>
+    </br>
+    Sub Total: {{ restaurant.order.subtotal }}</br> 
+    Total: {{ restaurant.order.total }}</br>
+  </body>
+</html>

@@ -67,6 +67,23 @@
             "pa_mill-sandwich-breads":"ciabatta-bread"
          },
          "restaurant":"Mill Mountain Coffee"
+      },
+      {
+         "item":{
+            "name":"Chicken Sandwich",
+            "type":"line_item",
+            "qty":"1",
+            "tax_class":"",
+            "product_id":"2282",
+            "variation_id":"2283",
+            "line_subtotal":"6.75",
+            "line_total":"6.75",
+            "line_tax":"0.7",
+            "line_subtotal_tax":"0.7",
+            "pa_mill-sandwich-sides":"caesar-salad",
+            "pa_mill-sandwich-breads":"ciabatta-bread"
+         },
+         "restaurant":"Mill Mountain Coffee"
       }
    ]
 }
