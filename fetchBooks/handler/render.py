@@ -1,6 +1,8 @@
 import os
 import time
 
+from collections import defaultdict
+
 from jinja2 import Environment, FileSystemLoader
 
 from thrift.transport import TSocket
@@ -9,7 +11,7 @@ from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
 
 from ..fetch.fetchBooks.FetchBooksService import Iface, Processor, Client
-from ..fetch.fetchBooks.ttypes import FetchBooksResponse, Invoice, Order, Food
+from ..fetch.fetchBooks.ttypes import FetchBooksResponse, Invoice, Order, Food, Restaurant, Item
 
 
 class FetchBooks( Iface ):
@@ -45,34 +47,36 @@ class FetchBooks( Iface ):
 
     @classmethod
     def invoiceFromJson( cls, invoice ):
+        def foodFromJson( f ):
+            i = f["item"]
+            item = Item()
+            
+            item.name = i["name"]
+            item.qty = i["qty"]
+            item.subtotal = i["line_subtotal"]
+            item.total = i["line_total"]
+
+            return item
+
         i = Invoice()
-        o = Order()
+        r = Restaurants()
 
-        i.invoiceNumber = invoice["invoiceNumber"]
-        i.invoiceDate = invoice["invoiceDate"]
-        i.restaurant_name = invoice["restaurant_name"]
-        i.restaurant_address = invoice["restaurant_address"]
-        i.restaurant_contact = invoice["restaurant_contact"]
+        foods = invoice["food"]
 
-        order = invoice["order"]
-
-        o.subTotal = order["subTotal"]
-        o.tax = order["tax"]
-        o.discountPercentage = order["discountPercentage"]
-        o.food = []
-
-        foods = order["food"]
+        rs = defaultdict( list )
 
         for f in foods:
-            ff = Food()
-            ff.item = f["item"]
-            ff.description = f["description"]
-            ff.quantity = f["quantity"]
-            ff.unitCost = f["unitCost"]
+            rs[f["restaurant"]].append( foodFromJson( f ) )
 
-            o.food.append( ff )
-
-        i.order = o
+        for k in rs:
+            restaurant = Restaurant()
+            order = Order()
+            order.id = invoice["order"]["id"]
+            order.total = invoice["order"]["order_total"]
+            order.order_date = invoice["order"]["order_date"]
+            order.food = rs[k]
+            restaurant.order = order
+            i.restaurants.append( restaurant )
 
         return i
 

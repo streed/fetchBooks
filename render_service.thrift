@@ -17,38 +17,36 @@ struct FetchBooksResponse {
 /*
   The food object.
 */
-struct Food {
-  1:i32 id,
-  2:string item,
-  3:string description
-  4:i32 quantity,
-  5:i32 unitCost
+struct Item {
+  1:string name,
+  2:i32 qty,
+  3:i64 subtotal,
+  4:i64 total
 }
 
-typedef list<Food> FoodList
+typedef list<Item> Food
 
 /*
   The order object.
 */
 struct Order {
-  2:i32 subTotal,
-  3:i32 tax,
-  4:i32 discountPercentage,
-  5:FoodList food
+  1:i64 id,
+  2:i64 total, 
+  3:string order_date,
+  4:Food food
 }
 
-typedef list<Order> OrderList
+struct Restaurant {
+  1:Order order
+}
+
+typedef list<Restaurant> Restaurants
 
 /* 
   The Invoice object
 */
-struct Invoice {
-  1:i64 invoiceNumber,
-  2:i64 invoiceDate,
-  3:string restaurant_name,
-  4:string restaurant_address,
-  5:string restaurant_contact,
-  6:Order order
+struct Invoice { 
+  1:Restaurants restaurants
 }
 
 /*
