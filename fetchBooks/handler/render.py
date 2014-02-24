@@ -97,7 +97,7 @@ class FetchBooks( Iface ):
 
             html = template.render( restaurant=r )
 
-            HTML( string=html ).write_pdf( "/tmp/test.pdf" )
+            print HTML( string=html ).write_pdf( "/tmp/test.pdf" )
 
         
         return  response
