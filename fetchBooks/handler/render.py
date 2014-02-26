@@ -1,6 +1,9 @@
 import boto
 import os
+import tempfile
 import time
+
+from boto.s3.key import Key
 
 from collections import defaultdict
 
@@ -87,6 +90,9 @@ class FetchBooks( Iface ):
 
     def render_invoice( self, invoice ):
 
+        conn = boto.connect_s3()
+        bucket = conn.get_bucket( "fetchbooks" )
+
         response = FetchBooksResponse()
         response.timestamp = int( time.time() )
         response.invoiceUrl = "http://test.com"
@@ -97,7 +103,13 @@ class FetchBooks( Iface ):
 
             html = template.render( restaurant=r )
 
-            print HTML( string=html ).write_pdf( "/tmp/test.pdf" )
+            f, path = tempfile.mkstemp()
+
+            HTML( string=html ).write_pdf( path )
+
+            k = Key( bucket )
+            k.key = "%s/%s.pdf" % ( invoice.restaurants[0].name, invoice.restaurants[0].order.id )
+            k.set_contents_from_filename( path )
 
         
         return  response
