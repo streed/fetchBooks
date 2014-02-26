@@ -109,7 +109,7 @@ class FetchBooks( Iface ):
             HTML( string=html ).write_pdf( path )
 
             k = Key( bucket )
-            key = "%s/%s/%s.pdf" % ( invoice.restaurants[0].name, datetime.date.today(), invoice.restaurants[0].order.id )
+            key = "%s/%s/%s.pdf" % ( r.name, datetime.date.today(), r.order.id )
             k.key = key
             k.set_contents_from_filename( path )
 
