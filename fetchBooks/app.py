@@ -1,3 +1,4 @@
+import boto
 import json
 from flask import Flask, request
 from flask.ext.restful import Api, Resource
@@ -25,6 +26,8 @@ class FetchBooks( Resource ):
 api.add_resource( FetchBooks, "/invoice" )
 
 
-
+@app.route( "/" )
+def index():
+   pass 
 
 

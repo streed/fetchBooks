@@ -1,5 +1,7 @@
 import boto
+import datetime
 import os
+import re
 import tempfile
 import time
 
@@ -89,13 +91,12 @@ class FetchBooks( Iface ):
 
 
     def render_invoice( self, invoice ):
-
         conn = boto.connect_s3()
         bucket = conn.get_bucket( "fetchbooks" )
 
         response = FetchBooksResponse()
         response.timestamp = int( time.time() )
-        response.invoiceUrl = "http://test.com"
+        response.invoiceUrl = ""
 
         template = FetchBooks.env.get_template( "invoice.html" )
 
@@ -108,9 +109,11 @@ class FetchBooks( Iface ):
             HTML( string=html ).write_pdf( path )
 
             k = Key( bucket )
-            k.key = "%s/%s.pdf" % ( invoice.restaurants[0].name, invoice.restaurants[0].order.id )
+            key = "%s/%s/%s.pdf" % ( invoice.restaurants[0].name, datetime.date.today(), invoice.restaurants[0].order.id )
+            k.key = key
             k.set_contents_from_filename( path )
 
+            response.invoiceUrl = key
         
         return  response
 
