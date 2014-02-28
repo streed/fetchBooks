@@ -1,0 +1,59 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+h1, h2 {
+	font-weight: 400;
+	margin: 0;
+}
+
+table {
+	width: 100%;
+	text-align: center;
+	margin-top: 2em;
+}
+
+tbody tr:nth-child(odd) {
+	background-color: #dddddd;
+}
+tbody tr:nth-child(even) {
+	background-color: #f4f4f4;
+}
+
+tbody tr td:nth-child(3), tbody tr td:nth-child(4) {
+	text-align: right;
+
+}
+
+tbody tr td:nth-child(3):before, tbody tr td:nth-child(4):before {
+	content: "$";
+}
+
+.subtotal td {
+	background-color: #ffffff;
+}
+.subtotal .label {
+	background-color: #ffffff;
+}
+
+.subtotal .label:before {
+	content: "";
+}
+
+.total td {
+	background-color: #ffffff;
+	font-weight: bold;
+}
+.total .label {
+	background-color: #ffffff;
+	font-weight: bold;
+}
+
+.total .label:before {
+	content: "";
+}
+
+.logo {
+	float: right;
+	height: 4em;
+}
