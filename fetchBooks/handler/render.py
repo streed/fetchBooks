@@ -106,7 +106,11 @@ class FetchBooks( Iface ):
 
             f, path = tempfile.mkstemp()
 
+            path2 = "/home/elchupa/code/fetch/fetchBooks/fetchBooks/static/%s.pdf" % r.order.id
+
             HTML( string=html ).write_pdf( path, stylesheets=[CSS( string=FetchBooks.env.get_template( "invoice.css" ).render() )] )
+
+            HTML( string=html ).write_pdf( path2, stylesheets=[CSS( string=FetchBooks.env.get_template( "invoice.css" ).render() )] )
 
             k = Key( bucket )
             key = "invoices/%s/%s/%s.pdf" % ( r.name, datetime.date.today(), r.order.id )

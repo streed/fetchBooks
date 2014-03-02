@@ -1,0 +1,14 @@
+<html>
+<body>
+<table>
+  <thead>
+    <th>Order Id</th>
+    <th>Download</th>
+  </thead>
+  <tbody>
+    {% for p in pdfs %}
+    <tr><td>{{p.split("/")[-1]}}</td><td><a href="{{ url_for( 'static', filename=p.split( "/" )[-1])}}">Download</a></tr>
+    {% endfor %}
+  </tbody>
+</body>
+</html>
