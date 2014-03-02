@@ -16,7 +16,7 @@ from thrift.transport import TTransport
 from thrift.protocol import TBinaryProtocol
 from thrift.server import TServer
 
-from weasyprint import HTML
+from weasyprint import HTML, CSS
 
 from ..fetch.fetchBooks.FetchBooksService import Iface, Processor, Client
 from ..fetch.fetchBooks.ttypes import FetchBooksResponse, Invoice, Order, Restaurant, Item
@@ -106,10 +106,10 @@ class FetchBooks( Iface ):
 
             f, path = tempfile.mkstemp()
 
-            HTML( string=html ).write_pdf( path )
+            HTML( string=html ).write_pdf( path, stylesheets=[CSS( string=FetchBooks.env.get_template( "invoice.css" ).render() )] )
 
             k = Key( bucket )
-            key = "%s/%s/%s.pdf" % ( r.name, datetime.date.today(), r.order.id )
+            key = "invoices/%s/%s/%s.pdf" % ( r.name, datetime.date.today(), r.order.id )
             k.key = key
             k.set_contents_from_filename( path )
 
