@@ -75,7 +75,8 @@ class FetchBooks( Iface ):
         rs = defaultdict( list )
 
         for f in foods:
-            rs[f["restaurant"]].append( foodFromJson( f ) )
+            if f.item.name != "Tips":
+                rs[f["restaurant"]].append( foodFromJson( f ) )
 
         for k in rs:
             restaurant = Restaurant()
