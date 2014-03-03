@@ -21,7 +21,8 @@ struct Item {
   1:string name,
   2:i32 qty,
   3:double subtotal,
-  4:double total
+  4:double total,
+  5:double tax
 }
 
 typedef list<Item> Food
@@ -31,6 +32,8 @@ typedef list<Item> Food
 */
 struct Order {
   1:i64 id,
+  2:double subtotal, 
+  2:double tax, 
   2:double total, 
   3:string order_date,
   4:Food food

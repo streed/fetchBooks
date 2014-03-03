@@ -16,21 +16,27 @@
             <tr>
               <td>{{ f.name }}</td>
               <td>{{ f.qty }}</td>
-              <td>{{ f.subtotal }}</td>
-              <td>{{ f.total }}</td>
+              <td>{{ "{$%.2f}"|format(f.subtotal) }}</td>
+              <td>{{ "{$%.2f}"|format(f.total) }}</td>
             </tr>
           {% endfor %}
             <tr class="subtotal">
                 <td> </td>
                 <td> </td>
                 <td class="label">Sub Total</td>
-                <td class="amount">{{ restaurant.order.subtotal }}</td>
+                <td class="amount">{{ "{$%.2f}"|format(restaurant.order.subtotal) }}</td>
+            </tr>
+            <tr class="tax">
+                <td> </td>
+                <td> </td>
+                <td class="label">Tax</td>
+                <td class="amount">{{ "{$%.2f}"|format(restaurant.order.tax) }}</td>
             </tr>
             <tr class="total">
                 <td> </td>
                 <td> </td>
                 <td class="label">Total</td>
-                <td class="amount">{{ restaurant.order.total }}</td>
+                <td class="amount">{{ "{$%.2f}"|format(restaurant.order.total) }}</td>
             </tr>
         </tbody>
     </table>

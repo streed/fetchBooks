@@ -63,6 +63,7 @@ class FetchBooks( Iface ):
             item.qty = int( i["qty"] )
             item.subtotal = float( i["line_subtotal"] )
             item.total = float( i["line_total"] )
+            item.tax = float( i["line_tax"] )
 
             return item
 
@@ -80,9 +81,14 @@ class FetchBooks( Iface ):
             restaurant = Restaurant()
             order = Order()
             order.id = invoice["order"]["id"]
-            order.total = float( invoice["order"]["order_total"] )
             order.order_date = invoice["order"]["order_date"]
+            order.tax = 0.0
+            order.subtotal = 0.0
             order.food = rs[k]
+            for f in order.food:
+                order.tax += f.tax
+                order.subtotal += f.total
+            order.total = order.tax + order.subtotal
             restaurant.order = order
             restaurant.name = k
             i.restaurants.append( restaurant )
