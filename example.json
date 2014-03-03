@@ -1,6 +1,6 @@
 {
    "order":{
-      "id":4134,
+      "id":4130,
       "status":"pending",
       "order_date":"2014-02-18 14:41:36",
       "modified_date":"2014-02-18 14:41:36",
@@ -35,7 +35,6 @@
       "order_tax":"0.7",
       "order_shipping":"5.99",
       "order_shipping_tax":"0",
-      "order_total":"13.44",
       "taxes":null,
       "customer_user":"2",
       "user_id":2,
@@ -53,7 +52,7 @@
    "food":[
       {
          "item":{
-            "name":"Chicken Caesar",
+            "name":"Chicken Caesar 2",
             "type":"line_item",
             "qty":"1",
             "tax_class":"",
