@@ -33,10 +33,10 @@ typedef list<Item> Food
 struct Order {
   1:i64 id,
   2:double subtotal, 
-  2:double tax, 
-  2:double total, 
-  3:string order_date,
-  4:Food food
+  3:double tax, 
+  4:double total, 
+  5:string order_date,
+  6:Food food
 }
 
 struct Restaurant {
